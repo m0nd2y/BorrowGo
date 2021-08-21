@@ -16,7 +16,7 @@ from django.urls import reverse
 def index(request):
     if 'user_id' in request.session.keys() :
         lists = Post.objects.all()
-        content = {'lists':lists}
+        content = {'lists':lists[::-1]}
         return render(request, 'postlist.html', content)
     else :
         return redirect('main_signin')
