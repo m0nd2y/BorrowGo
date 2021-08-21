@@ -1,44 +1,94 @@
-<html lang="ko">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-
-    <!-- Boot strap -->
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-    <style>
-        .panel-footer {
-            height: 10%;
-            color: gray;
-        }
-    </style>
-    <title>Excel Calculate</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login_Fail</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <style>
+    h1, h2, h3, h4, h5, h6, button {
+      color: rgb(252, 246, 245);
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    body {
+      margin:0;
+      padding:0;
+      background-color: rgb(123, 154, 204);
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .login_form {
+      background-color: rgb(252, 246, 245);
+      border-radius: 20px;
+      border: 0px;
+      box-shadow: 0px 1px 1px #333;
+      padding: 21px;
+      color: rgb(123, 154, 204);
+    }
+    .login_button {
+      background-color: rgb(252, 246, 245);
+      color: rgb(118, 118, 118) ;
+      border: 0;
+      border-radius: 20px;
+      width: 100px;
+      font-size: 14px;
+    }
+    .login_button:hover {
+      background-color: rgb(252, 246, 245);
+    }
+  </style>
 </head>
 
 <body>
+  <div class="py-5" style="margin-top:100px;">
     <div class="container">
-        <div class="header">
-            <div class="page-header">
-                <h1>
-                    <a href="/" class="btn btn-default btn-xs" style="margin: 10px">메인화면</a>
-                    Excel Calculate <small>with Django</small>
-                </h1>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <form id="c_form-h" class="" action="signin/login" method="POST">
+            <div class="form-group row">
+              <div class="col-1"></div>
+              <div class="col-10">
+                <center>
+                  <h2><i class="fas fa-hand-holding-heart mb-3"></i> Borrow Go</h2>
+                </center>
+                <input type="email" class="form-control login_form" name="loginEmail" placeholder="Email">
+              </div>
+              <div class="col-1"></div>
             </div>
+            <div class="form-group row">
+              <div class="col-1"></div>
+              <div class="col-10">
+                <input type="password" class="form-control login_form" name="loginPW" placeholder="Password" style="margin-top: -6px;">
+              </div>
+              <div class="col-1"></div>
+            </div>
+            <div class="form-group row">
+              <div class="col-1"></div>
+              <div class="col-10">
+                <center>
+                  <button type="submit" class="btn btn-primary login_button mb-2">Log in</button>
+                  <br>
+                  <a href="/signup" style="font-size:14px; color: rgb(252, 246, 245); text-decoration: underline;">Sign up</a>
+                </center>
+              </div>
+              <div class="col-1"></div>
+            </div>
+          </form>
         </div>
-        <div class="body">
-            <h1> 로그인 실패</h1>
-            <h4> 아이디 또는 비밀번호가 틀렸습니다. 로그인을 다시 시도해 주세요.</h4>
-            <a href="/signin" class="btn btn-success btn-xs" style="margin: 10px">로그인 하기</a>
-        </div>
-        <div class="panel-footer">
-            실전예제로 배우는 Django. Project3-ExcelCalculate
-        </div>
+        <div class="col-md-3"></div>
+      </div>
     </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+  
+  </script>
 </body>
 
 </html>

@@ -1,5 +1,7 @@
 from django.http.response import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
+from django.contrib import messages
 from random import *
 from .models import *
 from sendEmail.views import *
@@ -39,7 +41,8 @@ def login(request) :
     try :
         user = User.objects.get(user_email = loginEmail)
     except :
-        return redirect('main_loginFail')
+        messages.info(request, 'login fail')
+        return HttpResponseRedirect('/signin')
     ##login_pw_enc
     encoded_loginPW = loginPW.encode()
     encrypted_loginPW = hashlib.sha256(encoded_loginPW).hexdigest()
@@ -48,7 +51,8 @@ def login(request) :
         request.session['user_email'] = user.user_email
         return redirect('main_index')
     else :
-        return redirect('main_loginFail')
+        messages.info(request, 'login fail')
+        return HttpResponseRedirect('/signin')
     
 def loginFail(request) :
     return render(request, 'loginFail.html')
