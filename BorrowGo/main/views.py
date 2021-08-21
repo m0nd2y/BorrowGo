@@ -9,16 +9,45 @@ from random import *
 from .models import *
 from sendEmail.views import *
 import hashlib
+from django.urls import reverse
 #finish_project
 
 # Create your views here.
 def index(request):
-    if 'user_name' in request.session.keys() :
-        lists = User.objects.all()
+    if 'user_id' in request.session.keys() :
+        lists = Post.objects.all()
         content = {'lists':lists}
         return render(request, 'postlist.html', content)
     else :
         return redirect('main_signin')
+
+def postcreate(request) :
+    return render(request, 'postcreate.html')
+
+def postcreate_create(request) :
+    title = request.POST['postTitle']
+    content = request.POST['postContent']
+    location = request.POST['borrowLocation']
+    item = request.POST['borrowItem']
+    
+    #nowUser은 현재 접속중인 User 정보로 해야함
+    currentUser = request.session['user_id']
+    '''
+    print(1234)
+    print(currentUser)
+    print(1234)
+    nowUser = User.objects.get(user_email = currentUser)
+    print(nowUser)
+    '''
+    newPost = Post(post_title = title, post_content = content, location = location, item = item, writer_id = currentUser)
+    newPost.save()    
+
+    nowPost = Post.objects.all().last()
+    newBorrow = BorrowInfo(post = nowPost)
+    newBorrow.save()
+
+    return  HttpResponseRedirect(reverse('main_index'))
+
 
 def signup(request):
     return render(request, 'signup.html')
@@ -56,7 +85,7 @@ def login(request) :
     encoded_loginPW = loginPW.encode()
     encrypted_loginPW = hashlib.sha256(encoded_loginPW).hexdigest()
     if user.user_pw == encrypted_loginPW:
-        request.session['user_name'] = user.user_name
+        request.session['user_id'] = user.user_id
         request.session['user_email'] = user.user_email
         return redirect('main_index')
     else :
@@ -67,7 +96,7 @@ def loginFail(request) :
     return render(request, 'loginFail.html')
 
 def logout(request) :
-    del request.session['user_name']
+    del request.session['user_id']
     del request.session['user_email']
     return redirect('main_signin')
 

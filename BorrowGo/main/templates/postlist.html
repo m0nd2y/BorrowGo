@@ -73,7 +73,7 @@
       <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-          <h3><i class="far fa-clipboard"></i> 게시물<button type="submit" class="btn btn-light write_button float-right" onclick="location.href='/postCreate'"><i class="fas fa-pen"></i> 글쓰기</button></h3>
+          <h3><i class="far fa-clipboard"></i> 게시물<button type="submit" class="btn btn-light write_button float-right" onclick="location.href='/postcreate'"><i class="fas fa-pen"></i> 글쓰기</button></h3>
         </div>
         <div class="col-md-3"></div>
       </div>
@@ -84,14 +84,14 @@
           <div class="col-lg-6">
             <div class="card" onclick="location.href='/postDetail?id=1'">
               <div class="card-header">
-                <i class="fas fa-map-marker-alt"></i> <b class="location">{{list.user_email}}</b>
+                <i class="fas fa-map-marker-alt"></i> <b class="location">{{list.location}}</b>
               </div>
               <div class="card-body">
-                <h5 class="card-title">{{list.user_pw}}</h5>
-                <p class="card-text">{{list.user_id}}</p>
+                <h5 class="card-title">{{list.post_title}}</h5>
+                <p class="card-text">{{list.post_content}}</p>
               </div>
               <div class="card-footer">
-                {{list.user_phonenumber}}
+                {{list.create_time}}
               </div>
             </div>
           </div>
