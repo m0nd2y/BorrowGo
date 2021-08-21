@@ -26,8 +26,25 @@ def postcreate(request) :
 
 def postdetail(request, post_id):
     post = Post.objects.get(post_id = post_id)
-    content = {'post':post}
+    comment = Comment.objects.all()
+    content = {'post':post, 'comments':comment}
     return render(request, 'postdetail.html', content)
+
+def postcomment(request, post_id) :
+    post = Post.objects.get(post_id = post_id)
+    currentUser = request.session['user_id']
+    user = User.objects.get(user_id = currentUser)
+    content = {'post':post,'user':user}
+    return render(request, 'postcomment.html', content)
+
+def postcomment_create(request, post_id) :
+    price = request.POST['price']
+    content = request.POST['content']
+    currentUser = request.session['user_id']
+    newcomment = Comment(cost = price, comment_content = content, commenter = currentUser, comment_index = post_id) 
+    newcomment.save()    
+    
+    return  HttpResponseRedirect(reverse('main_postdetail', kwargs={'post_id':post_id}))
     
 def postcreate_create(request) :
     title = request.POST['postTitle']

@@ -19,7 +19,6 @@ class Post(models.Model):
     post_title = models.CharField(max_length = 30)
     item = models.CharField(max_length = 30)
     location = models.CharField(max_length = 30)
-    cost = models.IntegerField(null = True)
     post_content = models.TextField(null=True)
     create_time = models.DateTimeField(auto_now_add=True)
 
@@ -31,3 +30,11 @@ class BorrowInfo(models.Model):
     is_exceed = models.BooleanField(default=False)
     exceed_time = models.TimeField(null=True)
     exceed_cost = models.IntegerField(null=True)
+
+class Comment(models.Model):
+    comment_id = models.AutoField(primary_key=True)
+    comment_index = models.IntegerField(null = True)
+    commenter = models.CharField(max_length = 15)
+    cost = models.CharField(max_length = 15, null = True)
+    comment_content = models.TextField(null = True)
+    create_time = models.DateTimeField(auto_now_add=True)
