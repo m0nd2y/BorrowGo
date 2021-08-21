@@ -61,21 +61,21 @@
                   <h2 class="logo"><i class="fas fa-hand-holding-heart mb-1"></i> Borrow Go</h2>
                 </center>
                 <br>
-                <input type="text" class="form-control register_form" name="signupName" placeholder="name">
+                <input type="email" class="form-control register_form" name="signupEmail" placeholder="Email">
               </div>
               <div class="col-1"></div>
             </div>
             <div class="form-group row">
                 <div class="col-1"></div>
                 <div class="col-10">
-                  <input type="email" class="form-control register_form" name="signupEmail" placeholder="Email">
+                <input type="password" class="form-control register_form" name="signupPW" placeholder="Password">
                 </div>
                 <div class="col-1"></div>
               </div>
             <div class="form-group row">
               <div class="col-1"></div>
               <div class="col-10">
-                <input type="password" class="form-control register_form" name="signupPW" placeholder="Password">
+                <input type="text" class="form-control register_form" name="signupName" placeholder="name">
               </div>
               <div class="col-1"></div>
             </div>
@@ -107,12 +107,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-  
-  {% if messages %}
-    {% for message in messages %}
-    <script>alert("{{ message }}");</script>
-    {% endfor %}
-  {% endif %}
 </body>
 
 </html>
