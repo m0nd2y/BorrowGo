@@ -95,9 +95,7 @@ def signin(request):
 
 def login(request) :
     loginEmail = request.POST['loginEmail']
-    print("loginEmail", loginEmail)
     loginPW = request.POST['loginPW']
-    print("loginPW", loginPW)
     try :
         user = User.objects.get(user_email = loginEmail)
     except :
