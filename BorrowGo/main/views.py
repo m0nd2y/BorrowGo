@@ -24,6 +24,11 @@ def index(request):
 def postcreate(request) :
     return render(request, 'postcreate.html')
 
+def postdetail(request, post_id):
+    post = Post.objects.get(post_id = post_id)
+    content = {'post':post}
+    return render(request, 'postdetail.html', content)
+    
 def postcreate_create(request) :
     title = request.POST['postTitle']
     content = request.POST['postContent']
@@ -32,13 +37,6 @@ def postcreate_create(request) :
     
     #nowUser은 현재 접속중인 User 정보로 해야함
     currentUser = request.session['user_id']
-    '''
-    print(1234)
-    print(currentUser)
-    print(1234)
-    nowUser = User.objects.get(user_email = currentUser)
-    print(nowUser)
-    '''
     newPost = Post(post_title = title, post_content = content, location = location, item = item, writer_id = currentUser)
     newPost.save()    
 
