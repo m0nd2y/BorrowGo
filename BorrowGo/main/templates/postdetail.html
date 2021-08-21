@@ -88,7 +88,7 @@
 
             {% for comment in comments %}
             {% if post.post_id == comment.comment_index %}
-            <div class="row mt-2">
+            <div class="row mt-2" onclick="location.href='{{post.post_id}}/commentDetail/{{comment.comment_id}}'">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6">
                     <div class="card" style="background-color: rgb(123, 154, 204);color: rgb(252, 246, 245);box-shadow: 0px 1.5px 1.5px #666;">

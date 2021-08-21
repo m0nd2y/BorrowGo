@@ -21,6 +21,13 @@ def index(request):
     else :
         return redirect('main_signin')
 
+def commentdetail(request, post_id, comment_id) :
+    comment = Comment.objects.get(comment_id = comment_id)
+    post = Post.objects.get(post_id = post_id)
+    print(comment)
+    content = {'comment':comment, 'post':post}
+    return render(request, 'commentdetail.html', content)
+
 def postcreate(request) :
     return render(request, 'postcreate.html')
 
