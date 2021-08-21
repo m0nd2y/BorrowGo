@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -11,7 +14,9 @@ import hashlib
 # Create your views here.
 def index(request):
     if 'user_name' in request.session.keys() :
-        return render(request, 'index.html')
+        lists = User.objects.all()
+        content = {'lists':lists}
+        return render(request, 'postlist.html', content)
     else :
         return redirect('main_signin')
 
@@ -19,14 +24,17 @@ def signup(request):
     return render(request, 'signup.html')
 
 def join(request):
-    name = request.POST['signupName'].encode('utf-8').decode('iso-8859-1')
-    email = request.POST['signupEmail'].encode('utf-8').decode('iso-8859-1')
-    pw = request.POST['signupPW'].encode('utf-8').decode('iso-8859-1')
-    phone = request.POST['signupPhone'].encode('utf-8').decode('iso-8859-1')
+    email = request.POST['signupEmail']
+    pw = request.POST['signupPW']
+    name = request.POST['signupName']
+    phone = request.POST['signupPhone']
     encoded_pw = pw.encode()
     encrypted_pw = hashlib.sha256(encoded_pw).hexdigest()
     user = User(user_id = name,  user_pw = encrypted_pw, user_email = email, user_phonenumber=phone)
-    user.save()
+    try :
+        user.save()
+    except :
+        print(":(")
     response = redirect('main_index')
     response.set_cookie('user_id', user.user_id)
     return response
